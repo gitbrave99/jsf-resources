@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandLink action="/index" value="Regresar"/> <br/> 
+
+            <h:panelGrid border="1" columns="2" styleClass="table-style">
+
+                <h:outputLabel value="Nombre" for="nombre" />
+                <p:inputText value="#{tablaBean.person.nombre}"/>
+
+                <h:outputLabel value="Nombre" for="nombre" />
+                <p:inputText value="#{tablaBean.person.edad}"/>
+
+                <h:commandLink value="REgistrar" action="#{tablaBean.agregarPersona()}"/>
+            </h:panelGrid>
+
+            <h:dataTable var="p" value="#{tablaBean.listaPersona}">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="id" />
+                    </f:facet>
+                    <h:outputText value="#{p.nombre}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="edad" />
+                    </f:facet>
+                    <h:outputText value="#{p.nombre}" />
+                </p:column>
+                 <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Acciones" />
+                        </f:facet>
+                     <h:commandLink value="Eliminar" action="#{tablaBean.eliminarPersona(p)}" />  
+                        <h:commandLink value="editar" action="#{tablaBean.editarPersona(p)}" />  
+                    </p:column>
+            </h:dataTable>
+
+
+        </h:form>
+
+
+    </h:body>
+</html>

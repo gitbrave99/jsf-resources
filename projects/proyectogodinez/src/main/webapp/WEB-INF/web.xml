@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>inicio</servlet-name>
+        <servlet-class>controller.inicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cliente</servlet-name>
+        <servlet-class>controller.cliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cuenta</servlet-name>
+        <servlet-class>controller.cuenta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>transaccion</servlet-name>
+        <servlet-class>controller.transaccion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>inicio</servlet-name>
+        <url-pattern>/inicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cliente</servlet-name>
+        <url-pattern>/cliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cuenta</servlet-name>
+        <url-pattern>/cuenta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>transaccion</servlet-name>
+        <url-pattern>/transaccion</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>cliente</welcome-file>
+    </welcome-file-list>
+</web-app>

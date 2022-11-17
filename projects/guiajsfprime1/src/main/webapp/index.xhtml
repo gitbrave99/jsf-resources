@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Guia 1 JSF</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <!--<p:panelGrid columns="3" >-->
+            <!--                <h:outputLabel for="username" value="Usuario"/>-->
+            usuario
+            <h:inputText id="nombre" value="#{login.nombre}"
+                         required="true"
+                         requiredMessage="#{bundle.NombreRequerido}" />
+            
+            <h:message for="nombre" errorStyle="color:red"/>
+            <br/>
+            <!--<h:outputLabel for="password" value="Password 2: *" />-->
+            password
+            <h:inputSecret id="password" 
+                           value="#{login.password}" required="true"
+                           requiredMessage="#{bundle.PasswordRequerido}"/>
+            <h:message for="password" errorStyle="color:red"/>
+                
+            <br/>
+            <p:commandButton ajax="true" update="@form" value="Ingresar" action="#{login.validar}"
+                               />
+            <!--</p:panelGrid>-->
+            <h:messages errorStyle="color:red" infoStyle="color:green"/>
+        </h:form>
+        
+    </h:body>
+</html>
+

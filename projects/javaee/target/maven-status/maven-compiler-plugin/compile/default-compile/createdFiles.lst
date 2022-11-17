@@ -1,0 +1,4 @@
+scope\Persona.class
+scope\TablaBean.class
+com\mycompany\javaee\resources\JavaEE8Resource.class
+com\mycompany\javaee\JAXRSConfiguration.class

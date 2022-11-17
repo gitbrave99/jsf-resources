@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CuentaEditDlg" widgetVar="CuentaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCuentaTitle}">
+            <h:form id="CuentaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cuentaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_numeroCuenta}" for="numeroCuenta" />
+                        <p:inputText id="numeroCuenta" value="#{cuentaController.selected.numeroCuenta}" title="#{bundle.EditCuentaTitle_numeroCuenta}" required="true" requiredMessage="#{bundle.EditCuentaRequiredMessage_numeroCuenta}"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_nombreCuenta}" for="nombreCuenta" />
+                        <p:inputText id="nombreCuenta" value="#{cuentaController.selected.nombreCuenta}" title="#{bundle.EditCuentaTitle_nombreCuenta}" />
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_montoApertura}" for="montoApertura" />
+                        <p:inputText id="montoApertura" value="#{cuentaController.selected.montoApertura}" title="#{bundle.EditCuentaTitle_montoApertura}" />
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_fechaApertura}" for="fechaApertura" />
+                        <p:calendar id="fechaApertura" pattern="MM/dd/yyyy" value="#{cuentaController.selected.fechaApertura}" title="#{bundle.EditCuentaTitle_fechaApertura}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_saldo}" for="saldo" />
+                        <p:inputText id="saldo" value="#{cuentaController.selected.saldo}" title="#{bundle.EditCuentaTitle_saldo}" />
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_estadoCuenta}" for="estadoCuenta" />
+                        <p:inputText id="estadoCuenta" value="#{cuentaController.selected.estadoCuenta}" title="#{bundle.EditCuentaTitle_estadoCuenta}" />
+                        <p:outputLabel value="#{bundle.EditCuentaLabel_codCliente}" for="codCliente" />
+                        <p:selectOneMenu id="codCliente" value="#{cuentaController.selected.codCliente}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="codClienteItem"
+                                           itemValue="#{codClienteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cuentaController.update}" value="#{bundle.Save}" update="display,:CuentaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CuentaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CuentaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

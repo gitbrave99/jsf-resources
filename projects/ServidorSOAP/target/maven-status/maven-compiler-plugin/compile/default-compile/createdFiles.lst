@@ -1,0 +1,8 @@
+service\ClienteService.class
+db\Conexion.class
+implement\ClienteServiceImp.class
+com\proygodi\servidorsoap\JAXRSConfiguration.class
+com\proygodi\servidorsoap\resources\JavaEE8Resource.class
+DAO\ClienteDAO.class
+entity\Cliente.class
+controller\clientews.class

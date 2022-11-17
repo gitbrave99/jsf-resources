@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nombre"/>
+                <h:inputText value="#{personBean.persona.nombre}"/>
+
+                <h:outputLabel value="Apellido"/>
+                <h:inputText value="#{personBean.persona.apellido}"/>
+
+                <h:outputLabel value="Sexo"/>
+                <h:selectOneMenu value="#{personBean.persona.sexo}">
+                    <f:selectItem itemValue="M" itemLabel="Masculino"/>
+                    <f:selectItem itemValue="F" itemLabel="Femenino"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+
+            <h:commandButton value="Agregar" actionListener="#{personBean.addPerson()}"/>
+<!--rendered="#{personBean.listPersons.size() > 0 eq true}"-->
+            <h:dataTable value="#{personBean.listPersons}" var="person" >
+                <h:column>
+                    <f:facet name = "header">Nombre</f:facet>
+                    <h:outputLabel value="#{person.nombre}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Apellido</f:facet>
+                    <h:outputLabel value="#{person.apellido}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Sexo</f:facet>
+                    <h:outputLabel value="#{person.sexo}"/>
+                </h:column>
+                
+                <h:column>
+                    <h:commandLink value="Eliminar" actionListener="#{personBean.delPerson(person)}"/> 
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+
